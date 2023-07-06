@@ -1,0 +1,42 @@
+
+
+.card {
+    border: none;
+    border-left: 5px solid #0000;
+    margin-top: 20px;
+    border-top-left-radius: 30px;
+    border-left-color: #FFED00
+  }
+  
+  .badge-primary{
+    background-color: #e9eeff;
+    color: #4772fe;
+  }
+  
+  .badge-danger{
+    background-color: #fef0f0 ;
+    color: #f04141;
+    margin-top:50px;
+  
+  }
+
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  
+  ::ng-deep .cdk-overlay-container {
+    z-index: 1200 !important;
+  }

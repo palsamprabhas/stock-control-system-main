@@ -1,0 +1,113 @@
+<div class="mt-3">
+    <h2>New Inventory Requests</h2>
+</div>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of newInventoryRequests'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h5 class="text-secondary"> Description: {{ inventory.item.description }} </h5>
+                    <h5 class="text-secondary">Price: {{ inventory.item.price }} </h5>
+                </div>
+                <div style="float: right;">                    
+                    <button mat-raised-button color="primary" (click)="inventoryAccepted(inventory.id, 'SUPPLIER_ACCEPTED')">Accept</button>                                                           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-divider class="mt-3"></mat-divider>
+
+<div class="mt-3">
+    <h2>Accepted Inventory Requests</h2>
+</div>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of accptedInventoryRequests'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h5 class="text-secondary"> Description: {{ inventory.item.description }} </h5>
+                    <h5 class="text-secondary">Price: {{ inventory.item.price }} </h5>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-divider class="mt-3"></mat-divider>
+
+<div class="mt-3">
+    <h2>Completed Inventory Requests</h2>
+</div>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of completedInventoryRequests'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h5 class="text-secondary"> Description: {{ inventory.item.description }} </h5>
+                    <h5 class="text-secondary">Price: {{ inventory.item.price }} </h5>
+                </div>         
+                <div style="float: right;">
+                    <button mat-icon-button color="primary" (click)="generateInvoice(inventory.id)" title="download invoice">
+                      <mat-icon>download</mat-icon>
+                    </button>
+                  </div>      
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-divider class="mt-3"></mat-divider>
+
+<div class="mt-3">
+    <h2>Returned Inventory Requests</h2>
+</div>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of returnedInventoryRequests'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h5 class="text-secondary"> Description: {{ inventory.item.description }} </h5>
+                    <h5 class="text-secondary">Price: {{ inventory.item.price }} </h5>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>

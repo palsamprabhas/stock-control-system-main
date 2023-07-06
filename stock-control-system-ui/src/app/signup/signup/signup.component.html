@@ -1,0 +1,51 @@
+<br><br><br>
+<div class="m-4 d-flex justify-content-center">
+    <div [formGroup]="userForm" class="row rounded-4 border border-secondary border-2 p-3" style="max-width: 400px;">
+        <div class="text-center mt-3 mb-3">
+            <p class="h4"> Signup </p>
+        </div>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Confirm password</mat-label>
+            <input type="password" matInput formControlName="confirmPassword" required>
+        </mat-form-field>
+        <mat-label>Select user role</mat-label>
+        <mat-radio-group class="mb-3" aria-label="Select an option" formControlName="role">
+            <mat-radio-button  value="SUPPLIER">Supplier</mat-radio-button>
+            <mat-radio-button value="CONSUMER">Consumer</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Supplier/Consumer company name</mat-label>
+            <input matInput formControlName="companyName" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Phone number</mat-label>
+            <input type="tel" matInput formControlName="phoneNumber" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" required>
+        </mat-form-field>
+        <button type="button" class="btn btn-primary" (click)="createUser()">
+            Signup
+        </button>
+        <p class="text-center mt-2">Already have an account?
+            <CDBLink class="d-inline p-0" to="/signin">Sign In
+            </CDBLink>
+        </p>
+        <p class="text-center mt-2">By clicking <em>Sign up</em> you agree to our <CDBLink class="d-inline p-0" to="#">
+                terms of service</CDBLink>
+        </p>
+    </div>
+</div>

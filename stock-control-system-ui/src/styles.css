@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@600&display=swap');
+
+html, body { height: 100%; }
+body { 
+    margin: 0;
+    font-family: 'Alegreya', serif !important;
+    background-image: url('./assets/Bckground.png');
+    background-position: center;
+    background-size: cover;
+ }
+
+
+ /* You can add global styles to this file, and also import other style files */
+  .drop-shadow{
+    -webkit-box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+    -moz-box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+    box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+  }
+  
+  input[type = text]{
+    background-color: #fefefe;
+    height: 60px;
+    padding-left: 20px;
+  
+  }
+  
+  .btn-todo{
+    height: 60px!important;
+    background-color: #e9eeff!important;
+    color: #4772fe!important;
+    border: none!important;
+  
+  }
+  
+  .border-danger {
+    border: 1px solid red !important;
+  }
+  
+  
+
+.card{
+    border: none;
+    border-left: 5px solid #0000;
+    margin-top: 50px;
+    border-top-left-radius: 30px;
+  }
+  
+  .badge-primary{
+    background-color: #e9eeff;
+    color: #4772fe;
+  }
+  
+  .badge-danger{
+    background-color: #fef0f0 ;
+    color: #f04141;
+    margin-top:50px;
+  
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,26 @@
+<br><br><br>
+<div class="m-4 d-flex justify-content-center">
+    <div [formGroup]="userForm" class="row rounded-4 border border-secondary border-2 p-3" style="max-width: 400px;">
+        <div class="text-center mt-3 mb-3">
+            <p class="h4"> Signin </p>
+        </div>            
+        <div *ngIf="isLoginFailed" class="alert alert-danger">
+            Login failed. Please check username and password.
+        </div>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Password</mat-label> 
+            <input type="password" matInput formControlName="password" required>
+        </mat-form-field>
+        <div class="d-flex flex-wrap justify-content-center align-items-center">
+            <CDBLink to="/">Forgot Password ?</CDBLink>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="loginUser()" >
+            Signin
+        </button>
+        <p class="text-center mt-2">Not a member? <CDBLink class="d-inline p-0" to="/signup">Signup</CDBLink></p>
+    </div>
+</div>

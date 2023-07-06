@@ -1,0 +1,33 @@
+<div class="row categories-list">
+  <div class="col-md-3" *ngFor = 'let supplier of suppliers'>
+    <div class="card drop-shadow" [style.border-left-color] = 'colorCode'>
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <div class="badge badge-primary"> {{supplier.status}} </div>
+          </div>
+        </div>
+        <div class="todo-content">
+          <h3 [style.color] = 'supplier.colorCode'>{{ supplier.companyName }}</h3>
+          <small class="text-secondary">Address: {{ supplier.address }} </small>
+          <br>
+          <small class="text-secondary">Email: {{ supplier.email }} </small>
+          <br>
+          <small class="text-secondary">PhoneNumber: {{ supplier.phoneNumber }} </small>
+        </div>
+        <div style="float: right;">
+          <button *ngIf="supplier.status == 'APPROVED'" mat-icon-button color="accent" (click)=deleteSupplier(supplier.username)>
+            <mat-icon>delete</mat-icon>
+          </button> 
+          <button *ngIf="supplier.status != 'APPROVED'" mat-icon-button color="accent" (click)="updateSupplierStatus(supplier.username, 'REJECTED')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <button *ngIf="supplier.status != 'APPROVED'" mat-icon-button color="primary" (click)="updateSupplierStatus(supplier.username, 'APPROVED')">
+            <mat-icon>check-circle</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    

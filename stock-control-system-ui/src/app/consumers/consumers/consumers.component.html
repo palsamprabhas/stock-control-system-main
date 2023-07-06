@@ -1,0 +1,35 @@
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor = 'let consumer of consumers'>
+      <div class="card drop-shadow">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="float-left">
+              <div class="badge badge-primary"> {{consumer.status | uppercase}}  </div>
+            </div>
+          </div>
+  
+          <div class="todo-content">
+            <h3 [style.color] = 'consumer.colorCode'>{{ consumer.companyName }}</h3>
+            <small class="text-secondary">Address: {{ consumer.address }} </small>
+            <br>
+            <small class="text-secondary">Email: {{ consumer.email }} </small>
+            <br>
+            <small class="text-secondary">PhoneNumber: {{ consumer.phoneNumber }} </small>
+          </div>
+          <!-- <span class="badge badge-danger">{{ item. name }} - Todosff</span> -->
+          <div style="float: right;">
+            <button *ngIf="consumer.status == 'APPROVED'" mat-icon-button color="accent" (click)=deleteConsumer(consumer.username)>
+              <mat-icon>delete</mat-icon>
+            </button> 
+            <button *ngIf="consumer.status != 'APPROVED'" mat-icon-button color="accent" (click)="updateConsumerStatus(consumer.username, 'REJECTED')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <button *ngIf="consumer.status != 'APPROVED'" mat-icon-button color="primary" (click)="updateConsumerStatus(consumer.username, 'APPROVED')">
+              <mat-icon>check-circle</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    

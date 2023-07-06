@@ -1,0 +1,51 @@
+<div class="row d-flex justify-content-center mt-5" style="background-color: #FEF2F4;">
+        <div class="col-4">
+                <div>
+                        <h4>Overall Consumers Report</h4>
+                </div>
+                <div class="chart">
+                        <canvas baseChart [data]="overallConsumersPieChartData" [type]="pieChartType"
+                                [options]="pieChartOptions">
+                        </canvas>
+                </div>
+        </div>
+        <div class="col-4">
+                <div>
+                        <h4>Overall Suppliers Report</h4>
+                </div>
+                <div class="chart">
+                        <canvas baseChart [data]="overallSuppliersPieChartData" [type]="pieChartType"
+                                [options]="pieChartOptions">
+                        </canvas>
+                </div>
+        </div>
+</div>
+
+<div class="row d-flex justify-content-center mt-5" style="background-color: #FEF2F4;">
+        <div class="col-4 rounded-3 border border-secondary border-2 m-3 p-3">
+                <h4> Items Expiry Report</h4>
+                <mat-divider class="mb-2"></mat-divider>
+                <div class="alert alert-danger" *ngFor="let item of dangorItems">
+                        {{item.name}}: {{item.expiryDate | date: 'dd/MM/yyyy'}}
+                </div>
+                <div class="alert alert-warning" *ngFor="let item of warnItems">
+                        {{item.name}}: {{item.expiryDate | date: 'dd/MM/yyyy'}}
+                </div>
+                <div class="alert alert-info" *ngFor="let item of infoItems">
+                        {{item.name}}: {{item.expiryDate | date: 'dd/MM/yyyy'}}
+                </div>
+        </div>
+</div>
+
+<div class="row d-flex justify-content-center mt-5" style="background-color: #FEF2F4;">
+        <div class="col-8">
+                <div>
+                        <h4>Inventory Report</h4>
+                </div>
+                <div class="chart">
+                        <canvas baseChart class="chart" [data]="inventoryReportData" [options]="barChartOptions"
+                                [type]="barChartType">
+                        </canvas>
+                </div>
+        </div>
+</div>

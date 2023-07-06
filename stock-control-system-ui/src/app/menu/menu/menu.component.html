@@ -1,0 +1,60 @@
+<div class="app" style="display: flex; height: 100vh; overflow:scroll initial" *ngIf="isUserLoggedIn">
+    <CDBSidebar textColor="#F5EFE6  " backgroundColor="#0E5E6F">
+        <CDBSidebarContent style="font-size: 18px;">
+            <CDBSidebarMenu class="sidebar-content">
+                <CDBSidebarMenuItem link='/home' icon="home" *ngIf="role == 'ADMIN'">
+                    Home                   
+                </CDBSidebarMenuItem>   
+                <CDBSidebarMenuItem link='/consumer-home' icon="home" *ngIf="role == 'CONSUMER'">
+                    Consumer Home                   
+                </CDBSidebarMenuItem>
+                <CDBSidebarMenuItem link='/profile' icon="user" *ngIf="role == 'CONSUMER'">
+                    Profile                  
+                </CDBSidebarMenuItem>
+                <CDBSidebarMenuItem link='/supplier-home' icon="home" *ngIf="role == 'SUPPLIER'">
+                    Supplier Home                   
+                </CDBSidebarMenuItem>     
+                <CDBSidebarMenuItem link='/profile' icon="user" *ngIf="role == 'SUPPLIER'">
+                    Profile                  
+                </CDBSidebarMenuItem>       
+                <CDBSidebarMenuItem link='/items' icon="laptop" *ngIf="role == 'ADMIN'" >
+                    Items                  
+                </CDBSidebarMenuItem>               
+                <CDBSidebarMenuItem link='/inventory' icon="database" *ngIf="role == 'ADMIN'">
+                    Inventory                   
+                </CDBSidebarMenuItem> 
+                <CDBSidebarMenuItem link='/consumers' icon="users" *ngIf="role == 'ADMIN'" >
+                    Consumers                   
+                </CDBSidebarMenuItem> 
+                <CDBSidebarMenuItem link='/suppliers' icon="users" *ngIf="role == 'ADMIN'">
+                    Suppliers                   
+                </CDBSidebarMenuItem>     
+                <CDBSidebarMenuItem link='/item-requests' icon="bars" *ngIf="role == 'ADMIN'">
+                    Item Requests                   
+                </CDBSidebarMenuItem> 
+                <CDBSidebarMenuItem link='/racks' icon="bars" *ngIf="role == 'ADMIN'">
+                    Racks
+                </CDBSidebarMenuItem>                        
+                <CDBSidebarMenuItem link='/signout'  icon="sign-out" >
+                    Signout                   
+                </CDBSidebarMenuItem>                        
+            </CDBSidebarMenu>            
+        </CDBSidebarContent>
+    </CDBSidebar>
+</div>
+
+<div class="app" style="display: flex; height: 100vh; overflow:scroll initial" *ngIf="!isUserLoggedIn">
+    <CDBSidebar textColor="#F5EFE6  " backgroundColor="#0E5E6F">
+        <CDBSidebarContent style="font-size: 18px;">
+            <CDBSidebarMenu class="sidebar-content">                
+                <CDBSidebarMenuItem link='/signin' fab icon="sign-in" >
+                    Signin                  
+                </CDBSidebarMenuItem>     
+                <CDBSidebarMenuItem link='/signup' icon="registered" >
+                    Signup                   
+                </CDBSidebarMenuItem>                                             
+            </CDBSidebarMenu>
+        </CDBSidebarContent>
+    </CDBSidebar>
+</div>
+

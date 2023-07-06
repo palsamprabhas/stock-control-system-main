@@ -1,0 +1,195 @@
+<div class="mt-4 d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)=enableAddInventoryContainer()>
+        Request new inventory
+    </button>
+</div>
+
+<div class="mt-3">
+    <h2>Inprogreess Inventories</h2>
+</div>
+<mat-divider class="mt-3"></mat-divider>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of inProgressInventories'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h6 class="text-secondary"> Description: {{ inventory.item.description }} </h6>
+                    <h6 class="text-secondary">Item Price: {{ inventory.item.price | currency:'GBP' }} </h6>
+                    <h6>Total Price: {{ inventory.totalPrice | currency:'GBP' }} </h6>
+                </div>
+                <div style="float: right;">
+                    <button mat-icon-button color="primary" (click)=enableEditInventoryContainer(inventory.id) data-toggle="modal">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)=deleteInventory(inventory.id)>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="mt-3">
+    <h2>Supplier Accepted Inventories</h2>
+</div>
+<mat-divider class="mt-3"></mat-divider>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of acceptedInventories'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h6 class="text-secondary"> Description: {{ inventory.item.description }} </h6>
+                    <h6 class="text-secondary">Item Price: {{ inventory.item.price | currency:'GBP' }} </h6>
+                    <h6>Total Price: {{ inventory.totalPrice | currency:'GBP' }} </h6>
+                </div>
+                <div style="float: right;">                    
+                    <button mat-raised-button color="primary" (click)="inventoryReceivedConfirmation(inventory.id, 'IN_STOCK', inventory.supplierId)">Received</button>                                                           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="mt-3">
+    <h2>Instock Inventories</h2>
+</div>
+<mat-divider class="mt-3"></mat-divider>
+<div class="row categories-list">
+    <div class="col-md-3" *ngFor='let inventory of inStockInventories'>
+        <div class="card drop-shadow" [style.border-left-color]='colorCode'>
+            <div class="card-body">
+                <div class="clearfix row">
+                    <div class="float-left col">
+                        <div class="badge badge-primary"> Count: {{ inventory.count }} </div>
+                    </div>
+                    <div class="flot-right col">
+                        <div class="badge badge-primary"> {{ inventory.status }} </div>
+                    </div>
+                </div>
+                <div class="todo-content">
+                    <h3>{{ inventory.item.name }}</h3>
+                    <h6 class="text-secondary"> Description: {{ inventory.item.description }} </h6>
+                    <h6 class="text-secondary">Item Price: {{ inventory.item.price | currency:'GBP' }} </h6>
+                    <h6>Total Price: {{ inventory.totalPrice | currency:'GBP' }} </h6>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" [ngStyle]="{'display':isShowAddInventoryContainer}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div [formGroup]="inventoryForm" class="card drop-shadow">
+                <div class="m-4 justify-content-center d-flex flex-column">
+                    <ng-select placeholder="Item name*" formControlName="itemId" appearance="outline">
+                        <ng-option *ngFor="let item of items" [value]="item.id">{{item.name}}</ng-option>
+                    </ng-select>
+                    <ng-select placeholder="Rack name*" formControlName="rackId" appearance="outline">
+                        <ng-option *ngFor="let rack of racks" [value]="rack.id">{{rack.name}}</ng-option>
+                    </ng-select>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Count</mat-label>
+                        <input matInput formControlName="count" type="number" (change)="updateTotalPrice()" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Total price</mat-label>
+                        <input matInput formControlName="totalPrice" type="number" class="example-right-align"
+                            placeholder="0">
+                        <span matTextPrefix>£&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-end">
+                        <button mat-raised-button color="warn" style="margin-left: 5px;"
+                            (click)=disableAddInventoryContainer()>Close</button>
+                        <button mat-raised-button color="primary" style="margin-left: 5px;"
+                            (click)="addInventory()">Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" [ngStyle]="{'display':isShowEditInventoryContainer}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div [formGroup]="updateInventoryForm" class="card drop-shadow">
+                <div class="m-4 justify-content-center d-flex flex-column">
+                    <mat-form-field appearance="outline" floatLabel="always" disabled>
+                        <mat-label>Item name</mat-label>
+                        <mat-select formControlName="itemId">
+                          <mat-option *ngFor="let item of items" [value]="item.id">
+                            {{item.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Rack name</mat-label>
+                        <mat-select formControlName="rackId">
+                          <mat-option *ngFor="let rack of racks" [value]="rack.id">
+                            {{rack.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Count</mat-label>
+                        <input matInput formControlName="count" type="number" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Total price</mat-label>
+                        <input matInput formControlName="totalPrice" type="number" class="example-right-align"
+                            placeholder="0">
+                        <span matTextPrefix>£&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-end">
+                        <button mat-raised-button color="warn" style="margin-left: 5px;"
+                            (click)=disableEditInventoryContainer()>Close</button>
+                        <button mat-raised-button color="primary" style="margin-left: 5px;"
+                            (click)="updateInventory()">Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" [ngStyle]="{'display':isShowInventoryReceivedConfirmationContainer}">
+    <div class="modal-dialog">
+        <div class="modal-content p-3">
+            Did you receive damage items and return all ?
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" style="margin-left: 5px;" (click)="inventoryReceived()">
+                    No
+                </button>
+                <button mat-raised-button color="warn" style="margin-left: 5px;" (click)="inventoryReceivedDamaged()">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
